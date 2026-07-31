@@ -27,6 +27,11 @@ const CARDS = [
     cta: "Listen now",
     href: "#capture",
   },
+  {
+    eyebrow: "Test",
+    title: "This is a test.",
+    body: "Whitney is the best.",
+  },
 ];
 
 export default function Offerings() {
@@ -41,26 +46,28 @@ export default function Offerings() {
             Two powers, built into how your organization works.
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap gap-px border border-ink/10 bg-ink/10">
           {CARDS.map((card) => (
             <div
               key={card.title}
-              className="flex min-h-[220px] flex-col gap-3.5 bg-white p-6 sm:p-8"
+              className="flex min-h-[220px] flex-1 basis-[240px] flex-col gap-3.5 bg-white p-6 sm:p-8"
             >
               <span className="text-xs font-bold tracking-widest text-teal uppercase">
                 {card.eyebrow}
               </span>
               <h3 className="text-lg font-bold">{card.title}</h3>
               <p className="flex-1 text-sm text-warm-grey">{card.body}</p>
-              <a
-                href={card.href}
-                className="group inline-flex items-center gap-1.5 text-sm font-bold text-teal"
-              >
-                {card.cta}
-                <span className="transition group-hover:translate-x-1">
-                  &rarr;
-                </span>
-              </a>
+              {card.cta && card.href && (
+                <a
+                  href={card.href}
+                  className="group inline-flex items-center gap-1.5 text-sm font-bold text-teal"
+                >
+                  {card.cta}
+                  <span className="transition group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </a>
+              )}
             </div>
           ))}
         </div>
