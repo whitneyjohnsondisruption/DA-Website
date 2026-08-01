@@ -2,55 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const CORAL: [number, number, number] = [226, 121, 92];
-const TEAL: [number, number, number] = [24, 153, 162];
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t;
-}
-
-function mixColor(t: number) {
-  const clamped = Math.max(0, Math.min(1, t));
-  const [r, g, b] = [0, 1, 2].map((i) =>
-    Math.round(lerp(CORAL[i], TEAL[i], clamped))
-  );
-  return `rgb(${r},${g},${b})`;
-}
-
-type Point = { x: number; y: number; t: number };
-
-function buildPath(w: number, h: number, phase: number): Point[] {
-  const cx = w / 2;
-  const topPad = h * 0.05;
-  const squiggleEnd = h * 0.52;
-  const radius = h * 0.19;
-  const circleCenterY = squiggleEnd + radius;
-
-  const points: Point[] = [];
-
-  const squiggleSteps = 160;
-  for (let i = 0; i <= squiggleSteps; i++) {
-    const f = i / squiggleSteps;
-    const y = topPad + f * (squiggleEnd - topPad);
-    const ease = Math.pow(1 - f, 1.1); // amplitude tapers as it calms down
-    const amp = w * 0.2 * ease;
-    const freq = lerp(7.5, 1.6, Math.pow(f, 0.7)); // busy scribble calming to slow waves
-    const wobble = Math.sin(f * 23 + phase * 3) * ease * w * 0.03; // small irregular jitter, chaotic only near the top
-    const x = cx + amp * Math.sin(f * freq * Math.PI * 2 + phase) + wobble;
-    points.push({ x, y, t: f * 0.58 });
-  }
-
-  const circleSteps = 110;
-  for (let i = 0; i <= circleSteps; i++) {
-    const g = i / circleSteps;
-    const angle = -Math.PI / 2 + g * Math.PI * 2;
-    const x = cx + radius * Math.cos(angle);
-    const y = circleCenterY + radius * Math.sin(angle);
-    points.push({ x, y, t: 0.58 + g * 0.42 });
-  }
-
-  return points;
-}
+const RING_COUNT = 15;
+const LOBES = 7; // matching the book cover's petal-like wobble count
 
 type CoverMotifProps = {
   width?: number;
@@ -60,7 +13,7 @@ type CoverMotifProps = {
 
 export default function CoverMotif({
   width = 320,
-  height = 420,
+  height = 320,
   className,
 }: CoverMotifProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -79,33 +32,52 @@ export default function CoverMotif({
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
 
+    const cx = width / 2;
+    const cy = height / 2;
+    const rMax = Math.min(width, height) * 0.47;
+    const rMin = rMax * 0.42; // hollow center, like the cover's title space
     const state = { phase: 0 };
     let raf = 0;
-    const bands = 22;
 
     function frame() {
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
-      const points = buildPath(width, height, state.phase);
-      const perBand = Math.ceil(points.length / bands);
 
-      for (let b = 0; b < bands; b++) {
-        const start = b * perBand;
-        const end = Math.min(points.length - 1, start + perBand);
-        if (start >= end) continue;
-        const slice = points.slice(start, end + 1);
-        const avgT = slice.reduce((sum, p) => sum + p.t, 0) / slice.length;
+      // Vertical wash: coral at the top of the ring cluster, teal at the
+      // bottom — the cover colors by position, not by which ring is inner
+      // or outer.
+      const gradient = ctx.createLinearGradient(
+        cx,
+        cy - rMax,
+        cx,
+        cy + rMax
+      );
+      gradient.addColorStop(0, "#e2795c");
+      gradient.addColorStop(1, "#1899a2");
+
+      for (let i = 0; i < RING_COUNT; i++) {
+        const ringT = i / (RING_COUNT - 1);
+        const baseR = rMin + ringT * (rMax - rMin);
+        const amp = rMax * 0.045;
+        const ringPhase = state.phase + ringT * 0.6;
 
         ctx.beginPath();
-        slice.forEach((p, idx) => {
-          if (idx === 0) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        });
-        ctx.strokeStyle = mixColor(avgT);
-        ctx.lineWidth = lerp(3, 1.4, avgT);
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.globalAlpha = lerp(0.75, 0.95, avgT);
+        const steps = 140;
+        for (let s = 0; s <= steps; s++) {
+          const theta = (s / steps) * Math.PI * 2;
+          const wobble =
+            amp * Math.sin(theta * LOBES + ringPhase) +
+            amp * 0.4 * Math.sin(theta * (LOBES + 3) - ringPhase * 1.3);
+          const r = baseR + wobble;
+          const x = cx + r * Math.cos(theta);
+          const y = cy + r * Math.sin(theta);
+          if (s === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.4;
+        ctx.globalAlpha = 0.9;
         ctx.stroke();
       }
       ctx.globalAlpha = 1;
@@ -115,7 +87,7 @@ export default function CoverMotif({
 
     if (!reduceMotion) {
       const loop = () => {
-        state.phase += 0.0025;
+        state.phase += 0.0018;
         frame();
         raf = requestAnimationFrame(loop);
       };

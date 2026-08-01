@@ -40,7 +40,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex justify-center">
-          <CoverMotif width={300} height={400} />
+          <CoverMotif width={360} height={360} />
         </div>
       </div>
     </section>
