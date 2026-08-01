@@ -1,4 +1,4 @@
-import RingMotif from "./RingMotif";
+import CoverMotif from "./CoverMotif";
 
 export default function Hero() {
   return (
@@ -18,8 +18,9 @@ export default function Hero() {
             by it.
           </h1>
           <p className="mt-6 max-w-[46ch] text-lg text-cream/80">
-            For twenty years the answer has been more disruption.
-            Transformation actually runs on two corresponding powers &mdash;
+            For the past few decades, the answer has seemed to be more
+            disruption or more change. Transformation actually runs on two
+            corresponding powers &mdash;
             the will to disrupt, and the strength to stay steady. Disruption
             Advisors helps leaders build both.
           </p>
@@ -39,7 +40,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex justify-center">
-          <RingMotif size={360} rings={7} chaos={1} />
+          <CoverMotif width={300} height={400} />
         </div>
       </div>
     </section>
