@@ -28,16 +28,27 @@ export default function About() {
             CEO, Disruption Advisors &middot; Thinkers50
           </p>
           <p className="mt-5 max-w-[58ch] text-warm-grey">
-            I come to organizations as a strategic advisor, keynote speaker,
-            and author. I co-founded the Disruptive Innovation Fund with
-            Clayton Christensen, and I&rsquo;ve been named among the
-            world&rsquo;s top management thinkers by Thinkers50 since 2015.
+            I started out as a secretary on Wall Street, which mostly meant
+            answering other people&rsquo;s phones while quickly deciding
+            I&rsquo;d rather be the one on the call. So I became a banker
+            instead, then an equity analyst, and eventually co-founded an
+            investment fund with Harvard&rsquo;s Clayton Christensen &mdash; a
+            surprise, especially to me, given that my degree was in music.
+          </p>
+          <p className="mt-4 max-w-[58ch] text-warm-grey">
+            These days I run Disruption Advisors, where my team and I help
+            organizations get through the part where change is happening
+            &mdash; mostly, we help the actual humans inside them. Thinkers50
+            has ranked me one of the top management thinkers in the world
+            since 2015, ATD named me the 2025 Talent Development Thought
+            Leader, and more than 1.6 million people follow along on
+            LinkedIn.
           </p>
           <p className="mt-6 max-w-[56ch] font-serif text-lg text-ink italic">
             &ldquo;My ideas are down on the page now. But where they come
-            alive is in conversation &mdash; the one that starts when you
-            scribble in the margins and ask, what could this mean for me, and
-            for the people who matter to me?&rdquo;
+            alive is in conversation. The one that starts when you scribble in
+            the margins, circle a passage, and ask: what could this mean for
+            me, and for the people who are important to me?&rdquo;
           </p>
           <a
             href="#capture"

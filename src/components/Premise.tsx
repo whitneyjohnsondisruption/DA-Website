@@ -6,8 +6,8 @@ export default function Premise() {
           The Premise
         </span>
         <p className="mt-3 font-serif text-2xl text-balance text-ink italic sm:text-3xl">
-          &ldquo;Churn feels like progress, and stasis feels like calm &mdash;
-          and both are counterfeits.&rdquo;
+          &ldquo;Churn feels like progress. Stasis feels like calm. Both are
+          counterfeits.&rdquo;
         </p>
         <p className="mt-6 max-w-[62ch] text-warm-grey">
           Your teams are running on fumes from constant transformation. The

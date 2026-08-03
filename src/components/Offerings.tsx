@@ -27,11 +27,6 @@ const CARDS = [
     cta: "Listen now",
     href: "#capture",
   },
-  {
-    eyebrow: "Test",
-    title: "This is a test.",
-    body: "Whitney is the best.",
-  },
 ];
 
 export default function Offerings() {
