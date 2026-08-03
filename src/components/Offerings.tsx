@@ -34,12 +34,30 @@ export default function Offerings() {
     <section id="offerings" className="bg-cool-grey py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-10 flex flex-col gap-2 sm:mb-14">
-          <span className="text-xs font-bold tracking-widest text-teal uppercase">
+          <span className="flex items-center gap-2 text-xs font-bold tracking-widest text-teal uppercase">
+            <svg
+              width="28"
+              height="16"
+              viewBox="0 0 60 30"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 24C4 24 18 24 22 16C26 8 38 4 56 4"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
             How We Help
           </span>
           <h2 className="max-w-[20ch] text-2xl font-bold text-balance sm:text-4xl">
             Two powers, built into how your organization works.
           </h2>
+          <p className="max-w-[60ch] text-sm text-warm-grey">
+            Every engagement is grounded in the S Curve &mdash; Whitney&rsquo;s
+            framework for what growth actually looks like.
+          </p>
         </div>
         <div className="flex flex-wrap gap-px border border-ink/10 bg-ink/10">
           {CARDS.map((card) => (
