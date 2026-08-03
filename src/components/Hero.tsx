@@ -12,7 +12,7 @@ export default function Hero() {
             Your people aren&rsquo;t resisting change.
             <br />
             They&rsquo;re{" "}
-            <em className="font-serif text-chartreuse font-normal italic">
+            <em className="font-serif text-coral font-normal italic">
               exhausted
             </em>{" "}
             by it.

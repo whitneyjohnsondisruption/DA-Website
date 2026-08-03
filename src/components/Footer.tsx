@@ -3,24 +3,24 @@ const COLUMNS = [
     heading: "Company",
     links: [
       { label: "About", href: "#about" },
-      { label: "Speaking", href: "#offerings" },
-      { label: "Services", href: "#offerings" },
-      { label: "Contact", href: "#capture" },
+      { label: "Work With Us", href: "/work-with-us" },
+      { label: "Contact", href: "mailto:workwithus@thedisruptionadvisors.com" },
     ],
   },
   {
     heading: "Read",
     links: [
       { label: "Steady", href: "#steady" },
-      { label: "Smart Growth", href: "#offerings" },
-      { label: "Disrupt Yourself", href: "#offerings" },
+      { label: "All Books", href: "/books" },
     ],
   },
   {
-    heading: "Listen & Read",
+    heading: "Listen & Follow",
     links: [
       { label: "Podcast", href: "#offerings" },
       { label: "D is for Disruption newsletter", href: "#capture" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/whitneyjohnson/" },
+      { label: "Instagram", href: "https://www.instagram.com/johnsonwhitney/" },
     ],
   },
 ];
@@ -46,10 +46,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm hover:text-chartreuse"
-                  >
+                  <a href={link.href} className="text-sm hover:text-teal">
                     {link.label}
                   </a>
                 </li>
@@ -61,11 +58,11 @@ export default function Footer() {
       <div className="mx-auto mt-10 flex max-w-6xl flex-wrap justify-between gap-3 border-t border-cream/15 px-5 pt-5 text-sm text-cream/50 sm:px-8">
         <span>&copy; 2026 Disruption Advisors.</span>
         <span>
-          <a href="#" className="hover:text-chartreuse">
+          <a href="#" className="hover:text-teal">
             Privacy
           </a>{" "}
           &middot;{" "}
-          <a href="#" className="hover:text-chartreuse">
+          <a href="#" className="hover:text-teal">
             Terms
           </a>
         </span>

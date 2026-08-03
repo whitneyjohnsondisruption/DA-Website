@@ -1,9 +1,9 @@
 const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Speaking", href: "#offerings" },
-  { label: "Services", href: "#offerings" },
-  { label: "Steady", href: "#steady" },
-  { label: "Podcast", href: "#offerings" },
+  { label: "About", href: "/#about" },
+  { label: "Work With Us", href: "/work-with-us" },
+  { label: "Books", href: "/books" },
+  { label: "Steady", href: "/#steady" },
+  { label: "Podcast", href: "/#offerings" },
 ];
 
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
         <a
-          href="#top"
+          href="/"
           className="flex items-center gap-2.5 font-serif text-2xl font-semibold tracking-tight whitespace-nowrap text-ink"
         >
           <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
@@ -48,7 +48,7 @@ export default function Header() {
             ))}
           </ul>
           <a
-            href="#capture"
+            href="/work-with-us"
             className="rounded-full border border-ink/15 px-6 py-3 text-sm font-bold whitespace-nowrap text-ink transition hover:border-teal hover:text-teal"
           >
             Start a Conversation
