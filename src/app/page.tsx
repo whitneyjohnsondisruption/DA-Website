@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ClientLogos from "@/components/ClientLogos";
 import RingDivider from "@/components/RingDivider";
 import Premise from "@/components/Premise";
 import Offerings from "@/components/Offerings";
+import SCurveDiagram from "@/components/SCurveDiagram";
 import About from "@/components/About";
 import SteadyFeature from "@/components/SteadyFeature";
 import Praise from "@/components/Praise";
@@ -15,11 +17,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <RingDivider className="bg-ink" />
+        <ClientLogos />
         <Premise />
         <RingDivider className="bg-cream" />
         <Offerings />
-        <RingDivider className="bg-cool-grey" />
+        <SCurveDiagram />
         <About />
         <SteadyFeature />
         <Praise />
