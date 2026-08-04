@@ -50,10 +50,10 @@ export default function SteadyFeature() {
               Pre-order on Amazon
             </a>
             <a
-              href="#capture"
+              href="/steady"
               className="rounded-full border border-cream/40 px-7 py-3.5 text-sm font-bold text-cream transition hover:bg-cream/10"
             >
-              See all retailers
+              See the full Steady page
             </a>
           </div>
           <p className="mt-5 text-sm text-cream/50">

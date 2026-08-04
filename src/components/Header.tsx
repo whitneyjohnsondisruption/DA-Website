@@ -2,7 +2,7 @@ const NAV_LINKS = [
   { label: "About", href: "/#about" },
   { label: "Work With Us", href: "/work-with-us" },
   { label: "Books", href: "/books" },
-  { label: "Steady", href: "/#steady" },
+  { label: "Steady", href: "/steady" },
   { label: "Podcast", href: "/#offerings" },
 ];
 

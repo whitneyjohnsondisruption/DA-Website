@@ -1,5 +1,3 @@
-import CoverMotif from "./CoverMotif";
-
 export default function Hero() {
   return (
     <section id="top" className="bg-ink py-16 sm:py-24 lg:py-28">
@@ -8,14 +6,12 @@ export default function Hero() {
           <span className="text-xs font-bold tracking-widest text-teal uppercase">
             CEO, Disruption Advisors &middot; Thinkers50
           </span>
-          <h1 className="mt-4 text-4xl leading-[1.08] font-bold text-balance text-cream sm:text-5xl lg:text-6xl">
-            Your people aren&rsquo;t resisting change.
-            <br />
-            They&rsquo;re{" "}
+          <h1 className="mt-4 text-4xl leading-[1.1] font-bold text-balance text-cream sm:text-5xl lg:text-6xl">
+            In a world that demands constant motion,{" "}
             <em className="font-serif text-coral font-normal italic">
-              exhausted
+              stillness
             </em>{" "}
-            by it.
+            is a revolution.
           </h1>
           <p className="mt-6 max-w-[46ch] text-lg text-cream/80">
             For the past few decades, the answer has seemed to be more
@@ -32,15 +28,40 @@ export default function Hero() {
               Work With Disruption Advisors
             </a>
             <a
-              href="#steady"
+              href="/steady"
               className="rounded-full border border-cream/40 px-7 py-3.5 text-sm font-bold text-cream transition hover:bg-cream/10"
             >
               Pre-order Steady
             </a>
           </div>
         </div>
-        <div className="flex justify-center">
-          <CoverMotif width={360} height={360} />
+        <div className="hidden justify-center lg:flex" aria-hidden="true">
+          <svg
+            width="320"
+            height="220"
+            viewBox="0 0 320 220"
+            fill="none"
+            className="opacity-40"
+          >
+            <defs>
+              <linearGradient
+                id="hero-s-curve"
+                x1="0"
+                y1="220"
+                x2="320"
+                y2="0"
+              >
+                <stop offset="0" stopColor="#e2795c" />
+                <stop offset="1" stopColor="#1899a2" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M8 188C60 188 96 188 112 156C132 116 148 40 200 24C240 12 280 12 312 12"
+              stroke="url(#hero-s-curve)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+          </svg>
         </div>
       </div>
     </section>
